@@ -12,7 +12,7 @@ function job_detail_page(){
         )
     );
 
-    include get_template_directory() . '/admin/views/job-detail-form.php';
+    include get_template_directory() . '/admin/views/jobs/detail-form.php';
 
     save_job_detail();
 }

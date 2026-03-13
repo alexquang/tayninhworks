@@ -33,5 +33,5 @@ function job_manager_list_page()
         ORDER BY jobs.id DESC"
     );
 
-    include get_template_directory() . '/admin/views/list-job-form.php';
+    include get_template_directory() . '/admin/views/jobs/lists-form.php';
 }

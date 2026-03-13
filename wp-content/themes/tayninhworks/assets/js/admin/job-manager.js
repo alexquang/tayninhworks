@@ -7,8 +7,9 @@ document.getElementById("add-job").onclick = function () {
     div.style.marginTop = "10px";
 
     div.innerHTML =
-        '<input type="text" name="jobs[]" placeholder="Job title" class="regular-text"> \
-        <button type="button" class="button remove-job">Remove</button>';
+        '<div class="input-group mt-2">\
+        <input type="text" name="jobs[]" placeholder="Job title" class="form-control"> \
+        <button type="button" class="button remove-job">Remove</button></div>';
 
     document.getElementById("job-list").appendChild(div);
 

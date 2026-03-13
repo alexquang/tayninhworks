@@ -1,10 +1,23 @@
 <?php
 
-function admin_fonts(){
+function admin_fonts() {
 
     wp_enqueue_style(
         'admin-font',
         'https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap'
+    );
+
+    wp_enqueue_style(
+        'bootstrap-css',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
+    );
+
+    wp_enqueue_script(
+        'bootstrap-js',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js',
+        [],
+        null,
+        true
     );
 
 }
@@ -17,6 +30,8 @@ add_filter('tiny_mce_before_init', function($init) {
     return $init;
 
 });
+
+add_action('admin_enqueue_scripts','job_manager_scripts');
 
 
 require_once get_template_directory() . '/admin/pages/company/companies.php';
@@ -32,6 +47,13 @@ function job_manager_scripts($hook){
     wp_enqueue_script(
         'create-job-js',
         get_template_directory_uri().'/assets/js/admin/job-manager.js',
+        array(),
+        '1.0',
+        true
+    );
+    wp_enqueue_script(
+        'toast-js',
+        get_template_directory_uri().'/assets/js/admin/toast.js',
         array(),
         '1.0',
         true
