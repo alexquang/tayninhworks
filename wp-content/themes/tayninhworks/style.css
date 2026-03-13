@@ -1,0 +1,133 @@
+/*
+Theme Name: TayNinh Works
+Theme URI: https://example.com
+Author: Quang Pham Thanh
+Author URI: https://example.com
+Description: Custom WordPress Theme
+Version: 1.0
+License: GPL v2 or later
+Text Domain: tayninhworks
+*/
+body{
+    font-family: 'Noto Sans', sans-serif !important;
+}
+body#tinymce.wp-editor {
+    font-family: "Noto Sans", sans-serif !important;
+    font-size: 15px;
+    line-height: 1.6;
+}
+.company-box {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #efefef;
+    overflow: hidden;
+    margin-bottom:25px;
+}
+
+/* header */
+
+.company-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.company-header img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+/* company text */
+
+.company-info {
+    flex: 1;
+    text-align: center;
+}
+
+.company-info h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.company-info p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.job-title {
+    color: #ff6a00;
+    font-weight: bold;
+}
+
+/* job list */
+
+.job-list {
+    padding: 20px 60px;
+}
+
+.job-list ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.job-list li {
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+/* footer */
+
+.company-footer {
+    background: #0c2d44;
+    padding: 10px 20px;
+    text-align: right;
+}
+
+.company-footer a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+@media (max-width:768px) {
+
+    .company-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .company-header img {
+        margin-bottom: 10px;
+    }
+
+    .job-list {
+        padding: 20px;
+    }
+
+}
+.hero{
+    background:#0d6efd;
+    padding:80px 0;
+    color:white;
+}
+
+.job-card{
+border:1px solid #eee;
+padding:20px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.job-card:hover{
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.company-logo{
+width:60px;
+height:60px;
+object-fit:contain;
+}
