@@ -22,3 +22,39 @@ document.addEventListener("click", function (e) {
     }
 
 });
+
+const fileInput = document.getElementById("company_images");
+const form = document.getElementById("company_form");
+
+fileInput.addEventListener("change", function () {
+
+    let files = this.files;
+
+    if (files.length > 10) {
+
+        this.classList.add("is-invalid");
+
+    } else {
+
+        this.classList.remove("is-invalid");
+
+    }
+
+});
+
+form.addEventListener("submit", function (e) {
+
+    if (fileInput.files.length > 10) {
+
+        fileInput.classList.add("is-invalid");
+
+        e.preventDefault(); // chặn submit
+
+        fileInput.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }
+
+});

@@ -1,0 +1,180 @@
+.infocompany{
+	border: 1px solid #F36323  !important;
+	border-radius:3px;
+	margin-top: 20px;
+	margin-bottom: 0px;
+	padding: 30px;
+	-webkit-box-shadow: -8px -1px 66px -20px rgba(0,0,0,0.75);
+	-moz-box-shadow: -8px -1px 66px -20px rgba(0,0,0,0.75);
+	box-shadow: -8px -1px 66px -20px rgba(0,0,0,0.75);
+}
+.infocompanydetails{
+	
+}
+.infocompanydetails ul{
+	
+}
+.infocompanydetails li{
+	list-style: none;
+	text-align: left;
+}
+.infocompanydetails li h4{
+	color: #BB2D2D;
+}
+.imgcompanydetails{
+	
+}
+.imgcompanydetails img{
+	width: 150px;
+	height: 100px;
+	object-fit: contain;
+}
+h4{
+	font-weight: bold;
+	color: #BB2D2D;
+}
+.salarycompanydetails{
+	
+}
+.salarycompanydetails ul{
+
+}
+.salarycompanydetails li{
+	list-style: none;
+	line-height: 25px;
+}
+.salarycompanydetails li p{
+	color: #BB2D2D;
+}
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display: inline;     /* for IE7*/
+    *zoom:1;              /* for IE7*/
+}
+.nav-tabs li h4 a{
+	color: #BB2D2D;
+}
+.nav-tabs {
+    text-align:center;
+}
+
+.nav-tabs {
+    text-align:center !important;
+}
+.companytitle{
+	padding:0px !important;
+}
+.companytitle ul{
+	
+}
+.companytitle li{
+	list-style: none;
+	text-align: center;
+}
+.companytitle li h4{
+	color: #2a4168;
+}
+.companytitle li h5{
+	
+}
+
+.companytitle li h6{
+	text-align: center;
+}
+.desciption{
+	
+}
+.borderdesciption{
+	border-right: 1px solid #F36323;
+	padding-top: 20px;
+}
+.borderdesciption h4{
+	color: #BB2D2D;
+}
+.borderdesciption h5{
+	color: #000000;
+	font-weight: bold;
+}
+.margindesciption{
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+.contentdesciption{
+	margin-left: 10px;
+	font-size: 1rem !important;
+}
+.margintopaddress{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+.titlemap{
+	padding-left: 0px !important;
+}
+.splitline {
+	padding:0px !important;
+}
+.splitline {
+	border-bottom:1px solid #F36323 !important;
+	padding-left:0px !important;
+	margin-top:10px !important;
+	margin-bottom:10px !important;
+}
+.roomaddress{
+	
+}
+.viewmap{
+	padding-top: 12px;
+	text-align: right;
+}
+.recruitmentorther{
+	
+}
+.recruitmentorther ul{
+	list-style: none;
+}
+.recruitmentorther li{
+	line-height: 25px;
+	
+}
+.recruitmentorthertitle h4{
+	margin-left: 15px !important;
+}
+.titlecompanydetail{
+	
+}
+.titlecompanydetail{
+	padding-top: 20px;
+	padding-left: 15px;
+}
+.titlecompanydetail h4{
+	color: #BB2D2D;
+}
+.titlecompanydetail ul{
+	list-style: none;
+	padding:0px !important;
+}
+.titlecompanydetail li{
+	text-align: left;
+}
+.paddingtitlecompanydetail{
+	margin-left: 10px;
+}
+.imgcompany{
+	margin-top: 30px;
+}
+.introcompany{
+	margin-top: 30px;
+}
+.modal-body iframe{
+    width: 100% !important;
+}
+
+
+
+
+
+
+

@@ -1,17 +1,17 @@
-<?php 
-
-    global $wpdb;
-    $company_id = 0; // nếu chỉnh sửa thì set ID
-    $company = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}companies WHERE id = $company_id");
-    $logo_id = $company->logo_id ?? '';
+<?php
+global $wpdb;
+$company_id = 0; // nếu chỉnh sửa thì set ID
+$company = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}companies WHERE id = $company_id");
+$logo_id = $company->logo_id ?? '';
 ?>
 <div class="wrap">
 
-    <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-bottom mb-3"> 
-        <small class="text-body-secondary text-uppercase"><h1>TẠO MỚI THÔNG TIN CÔNG TY</h1></small>  
+    <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-bottom mb-3">
+        <small class="text-body-secondary text-uppercase">
+            <h1>TẠO MỚI THÔNG TIN CÔNG TY</h1>
+        </small>
     </div>
-
-    <form method="post">
+    <form method="post" enctype="multipart/form-data" id="company_form">
 
         <div class="container-fluid">
             <div class="row mb-3">
@@ -26,8 +26,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold d-block">Logo công ty</label>
-                        <input type="hidden" name="logo_id" id="logo_id" class="form-control" value="<?php echo esc_attr($logo_id); ?>">
-                        <button type="button" class="button" id="upload_logo_button">Upload Logo</button>
+                        <input type="file" name="logo_file" accept="image/*" class="form-control" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold">Website</label>
@@ -85,6 +84,10 @@
                         );
                         ?>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold d-block">Hình ảnh công ty (Tối đa 10 hình)</label>
+                        <input type="file" multiple name="company_images[]" id="company_images" accept="image/*" class="form-control" />
+                    </div>
                 </div>
             </div>
             <div class="row mb-3">
@@ -93,9 +96,9 @@
                         <label class="form-label fw-bold">Danh sách vị trí công việc</label>
                         <input type="text" name="jobs[]" placeholder="Job title" class="form-control">
                     </div>
-                        <button type="button" id="add-job" class="button button-secondary">
-                            + Add Job
-                        </button>
+                    <button type="button" id="add-job" class="button button-secondary">
+                        + Add Job
+                    </button>
                 </div>
             </div>
             <div class="row mb-3">
@@ -103,8 +106,8 @@
                     <div class="mb-3">
                         <label class="form-label fw-bold">Trạng thái</label>
                         <select name="status" class="form-control">
-                            <option value="pending">Pending</option>
-                            <option value="approved">Approved</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
                         </select>
                     </div>
                 </div>

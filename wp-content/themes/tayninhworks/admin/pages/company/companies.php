@@ -14,12 +14,58 @@ function save_job_manager()
     $wpdb->query('START TRANSACTION');
 
     try {
+        $logo_name = '';
+        if (!empty($_FILES['logo_file']['name'])) {
+
+            $upload_dir = wp_upload_dir();
+
+            wp_mkdir_p($upload_dir['path']);
+
+            $filename = basename($_FILES['logo_file']['name']);
+
+            $target_path = $upload_dir['path'] . '/' . $filename;
+
+            if (move_uploaded_file($_FILES['logo_file']['tmp_name'], $target_path)) {
+                $logo_name = $filename;
+            } else {
+
+                echo "Upload lỗi";
+            }
+        }
+
+        $uploaded_images = [];
+        if (!empty($_FILES['company_images']['name'][0])) {
+
+            $total_files = count($_FILES['company_images']['name']);
+            if ($total_files > 10) {
+                wp_die ("<div class='error'><span class='badge bg-secondary fs-7'>Tối đa 10 hình.</span></div>");
+            }
+
+            $upload_dir = wp_upload_dir();
+
+            foreach ($_FILES['company_images']['name'] as $key => $filename) {
+
+                if ($_FILES['company_images']['error'][$key] === 0) {
+
+                    $tmp_name = $_FILES['company_images']['tmp_name'][$key];
+
+                    $filename = basename($filename);
+
+                    $target_path = $upload_dir['path'] . '/' . $filename;
+
+                    if (move_uploaded_file($tmp_name, $target_path)) {
+
+                        $uploaded_images[] = $filename;
+                    }
+                }
+            }
+        }
+
         $company_table = $wpdb->prefix . 'companies';
         $job_table = $wpdb->prefix . 'jobs';
 
         $company_name = sanitize_text_field($_POST['company_name']);
         $address = sanitize_text_field($_POST['address']);
-        $logo_id = sanitize_text_field($_POST['logo_id']);
         $website = sanitize_text_field($_POST['website']);
         $phone = sanitize_text_field($_POST['phone']);
         $business_license = sanitize_text_field($_POST['business_license']);
@@ -27,7 +73,6 @@ function save_job_manager()
         $business_type = sanitize_text_field($_POST['business_type']);
         $working_time = sanitize_text_field($_POST['working_time']);
         $benefits = sanitize_text_field($_POST['benefits']);
-        //$company_images = sanitize_text_field($_POST['logo_id']);
         $company_description = sanitize_text_field($_POST['bussiness_info']);
         $status = sanitize_text_field($_POST['status']);
 
@@ -36,7 +81,7 @@ function save_job_manager()
             [
                 'company_name'          => $company_name,
                 'address'               => $address,
-                'logo_id'               => '["img1.jpg"]',
+                'logo_id'               => $logo_name,
                 'created_at'            => current_time('mysql'),
                 'website'               => $website,
                 'phone'                 => $phone,
@@ -45,7 +90,7 @@ function save_job_manager()
                 'business_type'         => $business_type,
                 'working_time'          => $working_time,
                 'benefits'              => $benefits,
-                'company_images'        => '["img1.jpg"]',
+                'company_images'        => json_encode($uploaded_images),
                 'company_description'   => $company_description
             ]
         );
@@ -69,10 +114,9 @@ function save_job_manager()
         }
 
         $wpdb->query('COMMIT');
+        echo "<div class='updated'><span class='badge bg-secondary fs-7'>Tạo thông tin công ty thành công.</span></div>";
     } catch (Exception $e) {
         $wpdb->query('ROLLBACK');
         echo "Error: " . $e->getMessage();
     }
-
-    echo "<div class='updated fs-5'>Tạo thông tin công ty thành công.</div>";
 }

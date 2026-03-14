@@ -8,10 +8,16 @@ function job_manager_list_page()
     if (isset($_GET['approve'])) {
 
         $id = intval($_GET['approve']);
-
+        $state = intval($_GET['state']);
+        $status = 'pending';
+        if ($state == '0') {
+            $status = 'approve';
+        } else {
+            $status = 'pending';
+        }
         $wpdb->update(
             $wpdb->prefix . 'jobs',
-            ['status' => 'approved'],
+            ['status' => $status],
             ['id' => $id]
         );
 
@@ -25,7 +31,7 @@ function job_manager_list_page()
         jobs.id,
         jobs.title,
         companies.company_name,
-        companies.address,
+        companies.business_license,
         jobs.status
         FROM {$wpdb->prefix}jobs jobs
         JOIN {$wpdb->prefix}companies companies

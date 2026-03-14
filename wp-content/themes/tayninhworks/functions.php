@@ -1,5 +1,4 @@
 <?php
-
 function admin_fonts() {
 
     wp_enqueue_style(
@@ -20,6 +19,7 @@ function admin_fonts() {
         true
     );
 
+
 }
 add_action('admin_enqueue_scripts','admin_fonts');
 
@@ -32,6 +32,39 @@ add_filter('tiny_mce_before_init', function($init) {
 });
 
 add_action('admin_enqueue_scripts','job_manager_scripts');
+
+function custom_job_rewrite_rule() {
+    add_rewrite_rule(
+        '^job/([0-9]+)/?$',
+        'index.php?job_id=$matches[1]',
+        'top'
+    );
+}
+add_action('init', 'custom_job_rewrite_rule');
+
+function custom_job_query_vars($vars) {
+    $vars[] = 'job_id';
+    return $vars;
+}
+add_filter('query_vars', 'custom_job_query_vars');
+
+function load_job_template($template) {
+
+    $job_id = get_query_var('job_id');
+
+    if ($job_id) {
+
+        $new_template = locate_template(['home/pages/job/single-job.php']);
+
+        if ($new_template) {
+            return $new_template;
+        }
+
+    }
+
+    return $template;
+}
+add_filter('template_include', 'load_job_template');
 
 
 require_once get_template_directory() . '/admin/pages/company/companies.php';
@@ -51,14 +84,6 @@ function job_manager_scripts($hook){
         '1.0',
         true
     );
-    wp_enqueue_script(
-        'toast-js',
-        get_template_directory_uri().'/assets/js/admin/toast.js',
-        array(),
-        '1.0',
-        true
-    );
-
 }
 
 add_action('admin_menu', 'job_manager_menu');

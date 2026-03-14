@@ -16,7 +16,7 @@
 
         $jobs = $wpdb->get_results(
             $wpdb->prepare(
-                "SELECT * FROM {$wpdb->prefix}jobs WHERE status = 'approved' and company_id=%d",
+                "SELECT * FROM {$wpdb->prefix}jobs WHERE status = 'approve' and company_id=%d",
                 $company->id
             )
         );
@@ -55,7 +55,7 @@
                     ?>
 
                         <li>
-                            <a href="/job/<?php echo $job->id; ?>">
+                            <a href="/tayninhworks/job/<?php echo $job->id; ?>">
                                 <?php echo esc_html($job->title); ?>
                             </a>
                         </li>
